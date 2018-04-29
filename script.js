@@ -137,7 +137,10 @@ let addMessageToMessageArea = (msg) => {
 		${chat.isGroup ? htmlForGroup : ""}
 		<div class="d-flex flex-row">
 			<div class="body m-1 mr-5">${msg.body}</div>
-			<div class="time ml-auto small align-self-end text-muted">${time}</div>
+			<div class="time ml-auto small align-self-end text-muted">
+				${time}
+				<i class="${msg.status < 2 ? "far" : "fas"} fa-check-circle"></i>
+			</div>
 		</div>
 	</div>
 	`;
