@@ -82,7 +82,7 @@ let messages = [
 		sender: 0,
 		body: "at home",
 		time: "April 25, 2018 13:22:03",
-		status: 1,
+		status: 2,
 		recvId: 2,
 		recvIsGroup: false
 	},

@@ -135,6 +135,8 @@ let addMessageToMessageArea = (msg) => {
 	</div>
 	`;
 
+	let sendStatus = `<i class="${msg.status < 2 ? "far" : "fas"} fa-check-circle"></i>`;
+
 	DOM.messages.innerHTML += `
 	<div class="align-self-${msg.sender === user.id ? "end self" : "start"} p-1 my-1 mx-3 rounded bg-white shadow-sm message-item" style="position:relative;">
 		<div class="options">
@@ -145,7 +147,7 @@ let addMessageToMessageArea = (msg) => {
 			<div class="body m-1">${msg.body}</div>
 			<div class="time ml-auto small d-block align-self-end text-right text-muted" style="width:70px;">
 				${mDate(msg.time).getTime()}
-				<i class="${msg.status < 2 ? "far" : "fas"} fa-check-circle"></i>
+				${(msg.sender === user.id) ? sendStatus : ""}
 			</div>
 		</div>
 	</div>
