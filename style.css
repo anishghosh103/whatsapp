@@ -76,6 +76,11 @@
 	outline: none;
 }
 
+.message-item {
+	position:relative;
+	max-width: 75%;
+	word-break: break-all;
+}
 .message-item.self {
 	background: #dcf8c6!important;
 }
