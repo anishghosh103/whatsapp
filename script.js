@@ -267,6 +267,8 @@ let init = () => {
 	DOM.profilePicInput.addEventListener("change", () => console.log(DOM.profilePicInput.files[0]));
 	DOM.inputName.addEventListener("blur", (e) => user.name = e.target.value);
 	generateChatList();
+
+	console.log("Click the Image at top-left to open settings.");
 };
 
 init();
