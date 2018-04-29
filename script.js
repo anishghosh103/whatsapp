@@ -107,7 +107,7 @@ let viewChatList = () => {
 				<div class="small last-message">${elem.isGroup ? contactList.find(contact => contact.id === elem.msg.sender).number + ": " : ""}${elem.msg.sender === user.id ? "<i class=\"" + statusClass + " fa-check-circle mr-1\"></i>" : ""} ${elem.msg.body}</div>
 			</div>
 			<div class="flex-grow-1 text-right">
-				<div class="small time">${mDate(elem.msg.time).getTime()}</div>
+				<div class="small time">${mDate(elem.msg.time).chatListFormat()}</div>
 				${elem.unread ? "<div class=\"badge badge-success badge-pill small\" id=\"unread-count\">" + elem.unread + "</div>" : ""}
 			</div>
 		</div>
@@ -120,9 +120,15 @@ let generateChatList = () => {
 	viewChatList();
 };
 
-let addMessageToMessageArea = (msg) => {
-	let time = mDate(msg.time).getTime();
+let addDateToMessageArea = (date) => {
+	DOM.messages.innerHTML += `
+	<div class="mx-auto my-2 bg-primary text-white small py-1 px-2 rounded">
+		${date}
+	</div>
+	`;
+};
 
+let addMessageToMessageArea = (msg) => {
 	let htmlForGroup = `
 	<div class="small font-weight-bold text-primary">
 		${contactList.find(contact => contact.id === msg.sender).number}
@@ -136,9 +142,9 @@ let addMessageToMessageArea = (msg) => {
 		</div>
 		${chat.isGroup ? htmlForGroup : ""}
 		<div class="d-flex flex-row">
-			<div class="body m-1 mr-5">${msg.body}</div>
-			<div class="time ml-auto small align-self-end text-muted">
-				${time}
+			<div class="body m-1">${msg.body}</div>
+			<div class="time ml-auto small d-block align-self-end text-right text-muted" style="width:70px;">
+				${mDate(msg.time).getTime()}
 				<i class="${msg.status < 2 ? "far" : "fas"} fa-check-circle"></i>
 			</div>
 		</div>
@@ -193,9 +199,17 @@ let generateMessageArea = (elem, chatIndex) => {
 
 	DOM.messages.innerHTML = "";
 
+	let currentDate = "";
 	msgs
 	.sort((a, b) => mDate(a.time).subtract(b.time))
-	.forEach((msg) => addMessageToMessageArea(msg));
+	.forEach((msg) => {
+		let msgDate = mDate(msg.time).getDate();
+		if (currentDate != msgDate) {
+			addDateToMessageArea(msgDate);
+			currentDate = msgDate;
+		}
+		addMessageToMessageArea(msg)
+	});
 };
 
 let showChatList = () => {
