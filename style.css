@@ -79,7 +79,7 @@
 .message-item {
 	position:relative;
 	max-width: 75%;
-	word-break: break-all;
+	word-break: break-word;
 }
 .message-item.self {
 	background: #dcf8c6!important;
