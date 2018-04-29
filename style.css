@@ -1,0 +1,135 @@
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: none;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(0, 0, 0, 0.3);
+}
+
+#main-container {
+	width: 100vw;
+	height: 100vh;
+}
+
+#navbar {
+	background: #009688;
+}
+
+.dropdown-toggle::after {
+	display: none;
+}
+
+.chat-list-item {
+	background: white;
+	cursor: pointer;
+}
+
+.chat-list-item:hover {
+	background: hsl(0, 0%, 95%);
+}
+
+.chat-list-item:active {
+	background: hsl(0, 0%, 85%);
+}
+
+.chat-list-item.active {
+	background: hsl(0, 0%, 90%);
+}
+
+.chat-list-item .chat-details {
+	width: 60%;
+}
+
+.chat-list-item.unread .name,
+.chat-list-item.unread .last-message {
+	font-weight: bold;
+}
+
+.chat-list-item .last-message,
+#message-area #navbar #details {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#message-area {
+	border-left: 1px solid white;
+}
+
+#message-area .overlay {
+	background: hsl(0, 0%, 80%);
+}
+
+#input-area {
+	background: hsl(0, 0%, 95%);
+}
+
+#input-area #input {
+	outline: none;
+}
+
+.message-item.self {
+	background: #dcf8c6!important;
+}
+.message-item .number {
+	color: #1f7aec !important;
+}
+.message-item .options {
+	position: absolute;
+	top: 0;
+	right: -3px;
+	opacity: 0;
+	transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-webkit-transition: all .2s ease-in-out;
+}
+.message-item:hover .options {
+	opacity: 1;
+	right: 0;
+}
+
+#messages {
+	flex: 1!important;
+	background: hsl(0, 0%, 80%);
+	overflow: auto;
+}
+
+#profile-settings {
+	position: absolute;
+	top: 0;
+	left: -110%;
+	background: hsl(0, 0%, 95%);
+	transition: all 0.2s ease-in;
+	-moz-transition: all .2s ease-in-out;
+	-webkit-transition: all .2s ease-in-out;
+}
+
+#profile-pic {
+	cursor: pointer;
+	position: relative;
+	width: 200px;
+}
+
+.profile-input {
+	border-bottom: 2px solid transparent  !important;
+	outline: none;
+}
+
+.profile-input:focus {
+	border-bottom-color: hsl(0, 0%, 50%) !important;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;
+}
